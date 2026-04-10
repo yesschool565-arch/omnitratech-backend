@@ -1,10 +1,4 @@
-# Replit Configuration for OmnitraTech Backend
-
-# Run command - what executes when you hit Run
+# Replit Configuration
 run = "npm start"
-
-# Build command - runs before the app starts
 build = "npm install && npm run build"
 
-# Entrypoint
-entrypoint = "dist/server.js"
