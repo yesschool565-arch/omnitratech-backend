@@ -5,7 +5,7 @@ services:
     plan: free
     
     # GitHub Repository
-    repo: https://github.com/YOUR_USERNAME/omnitratech-backend.git
+    repo: https://github.com/yesschool565-arch/omnitratech-backend.git
     branch: main
     
     # Build Configuration
@@ -34,11 +34,10 @@ services:
       sizeGB: 1
     
     # Auto-deploy on GitHub push
-    autoDeployOnPush: true
+    autoDeploy: true
     
     # Health Check
     healthCheckPath: /health
-    healthCheckStartupTimeout: 300
     
     # Region
     region: oregon
