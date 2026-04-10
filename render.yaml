@@ -27,12 +27,6 @@ services:
       - key: JWT_SECRET
         value: aFoZlWRbWgaeu321l7KKAV6p05waem82z63mXOQr97jcO+1dACh5qnR7UqVY5UGqAsZb4f81E9SzC1tl1vQ8RQ==
     
-    # Persistent Storage for JSON Database
-    disk:
-      name: omnitratech-db
-      mountPath: /opt/render/project/backend/data
-      sizeGB: 1
-    
     # Auto-deploy on GitHub push
     autoDeploy: true
     
