@@ -8,14 +8,3 @@ build = "npm install && npm run build"
 
 # Entrypoint
 entrypoint = "dist/server.js"
-
-# Environment
-[env]
-PORT = "3001"
-NODE_ENV = "production"
-
-# Ignore paths
-[ignore]
-node_modules = true
-.git = true
-dist = false
