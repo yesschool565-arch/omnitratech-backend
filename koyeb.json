@@ -1,0 +1,29 @@
+{
+  "build": {
+    "builder": "dockerfile"
+  },
+  "run": [
+    {
+      "name": "omnitratech-backend",
+      "docker": {
+        "dockerfile": "./Dockerfile"
+      },
+      "healthcheck": {
+        "http": {
+          "path": "/health",
+          "port": 3001
+        }
+      },
+      "routes": [
+        {
+          "path": "/",
+          "methods": ["*"]
+        }
+      ],
+      "env": {
+        "PORT": "3001",
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
