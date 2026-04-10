@@ -1,0 +1,21 @@
+# Replit Configuration for OmnitraTech Backend
+
+# Run command - what executes when you hit Run
+run = "npm start"
+
+# Build command - runs before the app starts
+build = "npm install && npm run build"
+
+# Entrypoint
+entrypoint = "dist/server.js"
+
+# Environment
+[env]
+PORT = "3001"
+NODE_ENV = "production"
+
+# Ignore paths
+[ignore]
+node_modules = true
+.git = true
+dist = false
