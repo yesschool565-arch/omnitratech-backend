@@ -1,0 +1,57 @@
+# Fly.io Configuration for OmnitraTech Backend
+# Generated for Express.js API server
+
+app = "omnitratech-backend"
+primary_region = "ord"  # Chicago - Central US
+
+# Build Configuration
+[build]
+dockerfile = "Dockerfile"
+
+# Environment Variables
+[env]
+PORT = "3001"
+NODE_ENV = "production"
+
+# HTTP Service Configuration
+[[services]]
+internal_port = 3001
+processes = ["app"]
+protocol = "tcp"
+
+[services.concurrency]
+type = "connections"
+hard_limit = 25
+soft_limit = 20
+
+# HTTP Handler
+[[services.ports]]
+port = 80
+handlers = ["http"]
+
+# HTTPS Handler
+[[services.ports]]
+port = 443
+handlers = ["tls", "http"]
+
+# Health Check Configuration
+[services.http_checks]
+enabled = true
+interval = 10000
+timeout = 5000
+grace_period = 5000
+method = "GET"
+path = "/health"
+protocol = "http"
+tls_skip_verify = false
+headers = {}
+
+# Restart Policy
+[processes]
+app = "npm start"
+
+# VM Configuration for free tier
+[vm]
+cpu_kind = "shared"
+cpus = 1
+memory_mb = 256
