@@ -4,40 +4,41 @@ services:
     runtime: node
     plan: free
     
-    # Repository settings
-    repo: $YOUR_GITHUB_REPO_URL
+    # GitHub Repository
+    repo: https://github.com/YOUR_USERNAME/omnitratech-backend.git
     branch: main
     
-    # Build command
+    # Build Configuration
     buildCommand: npm install && npm run build
+    startCommand: npm start
     
-    # Start command
-    startCommand: node dist/server.js
-    
-    # Environment variables
+    # Environment Variables
     envVars:
       - key: PORT
         value: 3001
       - key: NODE_ENV
         value: production
       - key: CORS_ORIGIN
-        generateValue: true
-        # Set this to your Vercel frontend URL in Render dashboard
-        # Example: https://your-app.vercel.app
+        value: https://YOUR_FRONTEND_DOMAIN.vercel.app
+      - key: ADMIN_USER
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: admin123
+      - key: JWT_SECRET
+        value: aFoZlWRbWgaeu321l7KKAV6p05waem82z63mXOQr97jcO+1dACh5qnR7UqVY5UGqAsZb4f81E9SzC1tl1vQ8RQ==
     
-    # Health check
-    healthCheckPath: /
-    
-    # Auto-deploy on push
-    autoDeployOnPush: true
-    
-    # Disk quota
+    # Persistent Storage for JSON Database
     disk:
-      name: db-storage
+      name: omnitratech-db
       mountPath: /opt/render/project/backend/data
       sizeGB: 1
-
-# NOTE: 
-# 1. Replace $YOUR_GITHUB_REPO_URL with your GitHub repository URL
-# 2. After deployment, get the Render URL and set it as VITE_API_URL in Vercel
-# 3. Then update CORS_ORIGIN in Render with your Vercel frontend URL
+    
+    # Auto-deploy on GitHub push
+    autoDeployOnPush: true
+    
+    # Health Check
+    healthCheckPath: /health
+    healthCheckStartupTimeout: 300
+    
+    # Region
+    region: oregon
